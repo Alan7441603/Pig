@@ -19,6 +19,15 @@ struct ContentView: View{
                 Image("Pig").resizable().frame(width: 150, height: 150)
                 customText(text: "Pig")
                 customText(text: "Turn Score: \(turnScore)")
+                HStack {
+                    Button("roll") {
+                        
+                    }
+                    .buttonStyle(CustomButtonStyle())
+                    Button("Hold") {
+                    }
+                    .buttonStyle(CustomButtonStyle())
+                }
                 customText(text: "Game Score: \(gameScore)")
                 Image("pips \(randomValue)")
                     .resizable()
@@ -31,6 +40,18 @@ struct ContentView: View{
         }
     }
 }
+
+        struct CustomButtonStyle: ButtonStyle {
+            func makeBody(configuration: Configuration) -> some View {
+                    configuration.label
+                        .frame(width: 50)
+                        .font(Font.custom("Marker Felt", size: 24))
+                        .padding()
+                        .background(.red).opacity(configuration.isPressed ? 0.0 : 1.0)
+                        .foregroundColor(.white)
+                        .clipShape(RoundedRectangle(cornerRadius:10))
+            }
+        }
 struct customText: View {
     let text: String
     var body: some View {
